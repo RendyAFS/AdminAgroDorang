@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-2">
             <div class="wadahlogo d-flex justify-content-center">
-                <img src="{{ asset('storage/logo/LogoArgoDorang.png')}}" alt="Logo" style="width: 50px">
+                <img src="{{ asset('storage/logo/LogoArgoDorang.png')}}" alt="Logo">
             </div>
         </div>
         <div class="col-10">
