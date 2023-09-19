@@ -1,0 +1,107 @@
+ /* CSS */
+ .sidebar {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    width: 250px;
+    max-height: 95%;
+    color: #fff;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #475889;
+
+}
+
+.topbar {
+    display: none;
+    /* Sembunyikan topbar secara default */
+    background-color: #475889;
+    color: #EEFFED;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Pastikan topbar muncul di atas konten */
+}
+.wadahlogo{
+    background-color: #EEFFED;
+    padding: 2px;
+    border-radius: 10px;
+}
+
+.dropdown-menu li a i {
+    color: #475889;
+}
+.dropdown-menu li .out i {
+    color: red;
+}
+
+.menu ul li a i{
+    color: #a3d042;
+}
+.menu ul li a{
+    color: #EEFFED;
+}
+.menu ul li a:hover{
+    color: #9AB957;
+}
+.menu ul li a:focus{
+    color: #EEFFED;
+}
+
+
+@media screen and (max-width: 768px) {
+    .topbar {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+        /* Sembunyikan sidebar pada tampilan seluler */
+    }
+
+    .content {
+        margin-top: 50px;
+        /* Atur margin atas pada konten untuk memberikan ruang bagi topbar */
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .sidebar {
+        display: block;
+    }
+
+    .topbar {
+        display: none;
+        /* Sembunyikan topbar pada tampilan desktop */
+    }
+
+    .content {
+        margin-top: 0;
+        margin-left: 250px;
+        /* Sesuaikan dengan lebar sidebar */
+        /* Atur margin atas pada konten ke nilai semula */
+    }
+    .logout{
+        display: absolute;
+        margin-top: 345px;
+    }
+}
+
+.content {
+    padding: 30px;
+    /* Berikan padding agar konten tidak berdekatan dengan sidebar */
+}
+
+/* .sidebar .logout {
+
+} */
+
+.body {
+    background-color: #EEFFED;
+}
+
