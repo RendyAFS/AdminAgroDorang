@@ -32,6 +32,9 @@ Route::resource('dasboards', DashboardController::class);
 
 // Katalog Mahal Controller
 Route::resource('mahals', KatalogMahalController::class);
+Route::get('getkatalogmahal', [KatalogMahalController::class,'getData'])->name('mahals.getData');
+
+
 
 
 
