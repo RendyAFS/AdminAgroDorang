@@ -1,4 +1,11 @@
  /* CSS */
+.btn-primary{
+    background-color: #475889;
+}
+.btn-primary:hover{
+    background-color: #3857c9;
+}
+
  .sidebar {
      position: fixed;
      top: 50%;
@@ -59,6 +66,19 @@
      color: #EEFFED;
  }
 
+ @media screen and (min-width: 390px) {
+    .judul-dashboard{
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: -20px;
+        margin-top: 20px;
+    }
+    #td{
+        background-color: #475889;
+        color: #fff;
+        font-weight: bold;
+    }
+}
 
  @media screen and (max-width: 768px) {
      .topbar {
@@ -83,6 +103,16 @@
  }
 
  @media screen and (min-width: 769px) {
+    .judul-dashboard{
+        font-size: 25px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #475889;
+        border-radius: 15px;
+        color: #FFFFFF;
+    }
      .sidebar {
          display: block;
      }

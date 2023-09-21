@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahal;
+use App\Models\Murah;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,8 +13,14 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $mahals = Mahal::all();
+        $murahs = Murah::all();
         $judulpage = "Dashboard";
-        return view('home', compact('judulpage'));
+        return view('home', compact(
+            'judulpage',
+            'mahals',
+            'murahs',
+        ));
     }
 
     /**

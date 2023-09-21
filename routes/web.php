@@ -27,7 +27,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Dashboard Controller
+
+Route::middleware(['auth'])->group(function () {
+    // Dashboard Controller
 Route::resource('dasboards', DashboardController::class);
 
 
@@ -43,8 +45,7 @@ Route::get('getkatalogmahal', [KatalogMahalController::class,'getData'])->name('
 // Katalog Murah Controller
 Route::resource('murahs', KatalogMurahController::class);
 Route::get('getkatalogmurah', [KatalogMurahController::class,'getData'])->name('murahs.getData');
-
-
+});
 
 
 // Katalog User Murah Controller

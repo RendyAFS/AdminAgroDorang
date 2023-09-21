@@ -48,15 +48,15 @@
                         id="katalogmahal">
                         <thead>
                             <tr>
-                                <td>id</td>
-                                <td>No.</td>
-                                <td>Nama Produk</td>
-                                <td>Gambar Produk</td>
-                                <td>Harga Produk</td>
-                                <td>Deskripsi Produk</td>
-                                <td>Stok Produk</td>
-                                <td>Satuan</td>
-                                <td>Opsi</td>
+                                <td id="td">id</td>
+                                <td id="td">No.</td>
+                                <td id="td">Nama Produk</td>
+                                <td id="td">Gambar Produk</td>
+                                <td id="td">Harga Produk</td>
+                                <td id="td">Deskripsi Produk</td>
+                                <td id="td">Stok Produk</td>
+                                <td id="td">Satuan</td>
+                                <td id="td">Opsi</td>
                             </tr>
                         </thead>
                     </table>
