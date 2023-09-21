@@ -9,7 +9,7 @@
                 <div class="logo-banner">
                     <img class="sahdow" src="{{ asset('/storage/Logo/LogoArgoDorang.png') }}" alt="Logo AgroDorang">
                     <p class="fst-italic" style="color: #475889">
-                        Supplier Bahan Pokok Pangan dan Bumbu Dapur.
+                        Supplier of Staple Food Ingredients and Kitchen Seasonings.
                     </p>
                 </div>
             </div>
@@ -83,7 +83,7 @@
             </div>
 
             <div class="hp">
-                <div class="col-lg-12 d-flex mb-5 ">
+                <div class="col-lg-12 d-flex mb-5 justify-content-center ">
                     <h6 id="no-results-message2" class="ms-5 ps-1 mt-3" style="display: none; opacity: 0.1;">Maaf Produk
                         tidak ditemukan</h6>
                     @foreach ($mahals as $mahal)
@@ -98,7 +98,7 @@
                                     {{ number_format($mahal->harga_product, 0, ',', '.') }}/Kg
                                 </p>
                                 <div class="text-center">
-                                    <a href="Detail" class="btn btn-light text-light shadow detail"
+                                    <a href="Detail" class="btn btn-light text-light shadow detail-mahal"
                                         data-bs-toggle="modal" data-bs-target="#detail" data-id="{{ $mahal->id }}"
                                         style="background-color:#475889; font-size:5px;">
                                         Detail
@@ -111,7 +111,7 @@
             </div>
             <!-- Modal -->
             <div class="modal fade" id="detail" tabindex="-1" aria-labelledby="detailLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         @include('actions.detailmahal')
                     </div>

@@ -9,7 +9,7 @@
                 <div class="logo-banner">
                     <img class="sahdow" src="{{ asset('/storage/Logo/LogoArgoDorang.png') }}" alt="Logo AgroDorang">
                     <p class="fst-italic" style="color: #475889">
-                        Supplier Bahan Pokok Pangan dan Bumbu Dapur.
+                        Supplier of Staple Food Ingredients and Kitchen Seasonings.
                     </p>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                                     {{ number_format($murah->harga_product, 0, ',', '.') }}/Kg
                                 </p>
                                 <div class="text-center">
-                                    <a href="Detail" class="btn btn-light text-light shadow detail"
+                                    <a href="Detail" class="btn btn-light text-light shadow detail-murah"
                                         data-bs-toggle="modal" data-bs-target="#detail" data-id="{{ $murah->id }}"
                                         style="background-color:#475889; font-size:5px;">
                                         Detail
