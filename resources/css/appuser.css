@@ -1,0 +1,206 @@
+.banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+.banner-content {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(246, 255, 246, 0.7);
+    color: white;
+    padding: 20px;
+    max-width: 90%;
+    width: 90%;
+    max-height: 75%;
+    height: 75%;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+
+.logo-banner img {
+    width: 500px;
+    margin-top: 10%;
+}
+
+
+/* UNTUK HP */
+@media screen and (min-width: 390px) {
+
+    .logo-banner img {
+        width: 35%;
+        /* Ukuran gambar logo diubah menjadi lebar penuh */
+        margin-top: 10px;
+        /* Mengurangi margin atas pada perangkat mobile */
+    }
+
+    .logo-banner p {
+        font-size: 10px
+    }
+
+    .ourproduct p {
+        margin-top: -15%;
+    }
+
+    .hp {
+        display: block;
+    }
+
+    .pc {
+        display: none;
+    }
+
+    .wadah-card {
+        max-width: 18rem;
+        width: 18rem;
+    }
+
+    .isi {
+        width: 100%;
+        max-width: 100%;
+
+        overflow: hidden;
+    }
+
+    .card-title {
+        font-size: 8px
+    }
+
+    .card-text {
+        font-size: 5px
+    }
+
+    .footer-icon-pc {
+        display: none
+    }
+
+    .footer-icon-hp {
+        display: block
+    }
+
+}
+
+/* UNTUK TABLET */
+@media screen and (min-width: 576px) {
+
+    .logo-banner img {
+        width: 40%;
+        /* Ukuran gambar logo diubah menjadi lebar penuh */
+        margin-top: 25px;
+        /* Mengurangi margin atas pada perangkat mobile */
+    }
+
+    .logo-banner p {
+        font-size: 20px
+    }
+
+}
+
+/* UNTUL LAPTOP PC */
+@media screen and (min-width: 768px) {
+    .logo-banner img {
+        width: 45%;
+        /* Ukuran gambar logo diubah menjadi 80% lebar parent */
+        margin-top: 15px;
+        /* Margin atas diperbesar pada tampilan tablet */
+    }
+
+    .ourproduct p {
+        margin-top: 0%;
+    }
+
+    .logo-banner p {
+        font-size: 20px
+    }
+
+    .hp {
+        display: none;
+    }
+
+    .pc {
+        display: block;
+    }
+
+    .wadah-card {
+        max-width: 18rem;
+        width: 18rem;
+    }
+
+    .isi {
+        width: 100%;
+        max-width: 100%;
+        height: 280px;
+        max-height: 280px;
+        overflow: hidden;
+    }
+
+    .card-title {
+        font-size: 20px
+    }
+
+    .card-text {
+        font-size: 18px
+    }
+
+    .footer-icon-pc {
+        display: block
+    }
+
+    .footer-icon-hp {
+        display: none
+    }
+}
+
+/* UNTUL LAPTOP PC */
+@media screen and (min-width: 992px) {
+    .logo-banner img {
+        width: 85%;
+        /* Ukuran gambar logo diubah menjadi 80% lebar parent */
+        margin-top: 20px;
+        /* Margin atas diperbesar pada tampilan tablet */
+    }
+
+    .logo-banner p {
+        font-size: 25px
+    }
+}
+
+/* UNTUL LAPTOP PC */
+@media screen and (min-width: 1200px) {
+    .logo-banner img {
+        width: 85%;
+        /* Ukuran gambar logo diubah menjadi 80% lebar parent */
+        margin-top: 30px;
+        /* Margin atas diperbesar pada tampilan tablet */
+    }
+
+    .logo-banner p {
+        font-size: 25px
+    }
+}
+
+/* UNTUL LAPTOP PC */
+@media screen and (min-width: 1400px) {
+    .logo-banner img {
+        width: 80%;
+        /* Ukuran gambar logo diubah menjadi 80% lebar parent */
+        margin-top: 80px;
+        /* Margin atas diperbesar pada tampilan tablet */
+    }
+}
+
+
+.footer {
+    background-color: #F2F5FF;
+}
+
+.w-footer img {
+    width: 15%
+}
