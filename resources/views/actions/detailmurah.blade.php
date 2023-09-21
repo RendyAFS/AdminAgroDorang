@@ -8,12 +8,12 @@
 
 <div class="row mt-3 mb-2">
     <div class="col text-center">
-        <p class="fs-2 fw-bold">{{ $murah->nama_product }}</p>
+        <p class="fs-5 fw-bold">{{ $murah->nama_product }}</p>
     </div>
 </div>
 
 <div class="foto-deatail-produk">
-    <img src="{{ asset('/storage/GambarProduk/' . $murah->gambar_product) }}" alt="">
+    <img src="{{ asset('/storage/GambarProduk/' . $murah->gambar_product) }}" alt=""loading="lazy">
 </div>
 
 <div class="footer-modal mt-4 mb-3 px-3">

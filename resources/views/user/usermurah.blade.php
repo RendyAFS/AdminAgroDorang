@@ -35,31 +35,31 @@
         </div>
     </div>
     <div class="container mt-3 p-lg-5 ">
-        <div class="row">
+        <div class="row ">
             <div class="pc">
-                <div class="col-lg-12 d-flex justify-content-center">
+                <div class="row d-flex justify-content-center">
                     <h1 id="no-results-message" class="mt-3" style="display: none; opacity: 0.1;">Maaf Produk tidak
                         ditemukan</h1>
                     @foreach ($murahs as $murah)
-                        <div class="card m-1 wadah-card shadow" style="border:solid 2px #9AB957">
-                            <div class="p-3 isi">
+                        <div class="card m-1 wadah-card shadow"
+                        style="border:solid 2px #9AB957 ">
+                            <div class="p-3 isi" >
                                 <img src="{{ asset('/storage/GambarProduk/' . $murah->gambar_product) }}"
-                                    class="card-img-top" alt="..."
+                                    class="card-img-top" alt="..." loading="lazy"
                                     style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h5 class="card-title fw-bold" style="color: #475889">{{ $murah->nama_product }}</h5>
                                 <p class="card-text" style="color: #9AB957">Rp
                                     {{ number_format($murah->harga_product, 0, ',', '.') }}/Kg
                                 </p>
-                                <hr>
-                                <div class="text-center">
-                                    <a href="Detail" id="detail-btn"
-                                        class="btn btn-light text-light shadow w-50 detail-murah" data-bs-toggle="modal"
-                                        data-bs-target="#detail" data-id="{{ $murah->id }}"
-                                        style="background-color: #475889">Detail
-                                    </a>
-                                </div>
+                            </div>
+                            <div class="card-footer text-center" >
+                                <a href="Detail" id="detail-btn"
+                                    class="btn btn-light text-light shadow w-50 detail-murah" data-bs-toggle="modal"
+                                    data-bs-target="#detail" data-id="{{ $murah->id }}"
+                                    style="background-color: #475889">Detail
+                                </a>
                             </div>
                         </div>
                     @endforeach
@@ -67,27 +67,28 @@
             </div>
 
             <div class="hp">
-                <div class="col-lg-12 d-flex mb-5 ">
+                <div class="row d-flex mb-5 justify-content-center ">
                     <h6 id="no-results-message2" class="ms-5 ps-1 mt-3" style="display: none; opacity: 0.1;">Maaf Produk
                         tidak ditemukan</h6>
                     @foreach ($murahs as $murah)
-                        <div class="card m-1 wadah-card shadow" style="border:solid 2px #9AB957;">
+                        <div class="card m-1 wadah-card shadow" style="border:solid 2px #9AB957; width:100px">
                             <div class="p-1 isi">
                                 <img src="{{ asset('/storage/GambarProduk/' . $murah->gambar_product) }}" class=""
-                                    alt="..." style="width:100%; height:75px;  object-fit: cover;">
+                                    alt="..." loading="lazy"
+                                    style="width:100%; height:75px;  object-fit: cover;">
                             </div>
                             <div class="card-body">
                                 <p class="card-title fw-bold" style="color: #475889">{{ $murah->nama_product }}</p>
                                 <p class="card-text" style="color: #9AB957">Rp
                                     {{ number_format($murah->harga_product, 0, ',', '.') }}/Kg
                                 </p>
-                                <div class="text-center">
-                                    <a href="Detail" class="btn btn-light text-light shadow detail-murah"
-                                        data-bs-toggle="modal" data-bs-target="#detail" data-id="{{ $murah->id }}"
-                                        style="background-color:#475889; font-size:5px;">
-                                        Detail
-                                    </a>
-                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <a href="Detail" class="btn btn-light text-light shadow detail-murah"
+                                    data-bs-toggle="modal" data-bs-target="#detail" data-id="{{ $murah->id }}"
+                                    style="background-color:#475889; font-size:5px;">
+                                    Detail
+                                </a>
                             </div>
                         </div>
                     @endforeach
@@ -95,7 +96,7 @@
             </div>
             <!-- Modal -->
             <div class="modal fade" id="detail" tabindex="-1" aria-labelledby="detailLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-dialog modal-sm modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content">
                         @include('actions.detailmurah')
                     </div>
