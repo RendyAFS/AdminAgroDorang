@@ -1,7 +1,7 @@
 @extends('layouts.appuser')
 
 
-<div class="banner mb-5 shadow-lg">
+<div class="banner mb-5 shadow-lg ">
     <img src="{{ asset('/storage/bahan/Banner.png') }}" alt="">
     <div class="banner-content">
         <div class="row d-flex justify-content-center">
@@ -13,20 +13,11 @@
                     </p>
                 </div>
             </div>
-            {{-- <div class="col-lg-6">
-                <div class="row text-center ">
-                    <div class="col-lg-10 banner3">
-                        <img src="{{ asset('/storage/bahan/Banner1.png') }}" alt="">
-                        <img src="{{ asset('/storage/bahan/Banner2.png') }}" alt="">
-                        <img src="{{ asset('/storage/bahan/Banner3.png') }}" alt="">
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
 </div>
 
-<div class="container mt-5 pt-5">
+<div class="container mt-5 pt-5 ">
     <div class="row">
         <div class="col-lg-12 ourproduct">
             <p>
@@ -40,9 +31,6 @@
             <div class="search-bar d-flex justify-content-end align-middle w-search">
                 <label>Search:</label>
                 <input type="text" class="ps-2 p-1 input-search ms-2" id="product-search">
-                {{-- <span class="input-group-text" style="background-color: #9AB957">
-                    <i class="bi bi-search text-white"></i>
-                </span> --}}
             </div>
         </div>
     </div>
@@ -66,10 +54,6 @@
                                 </p>
                                 <hr>
                                 <div class="text-center">
-                                    {{-- <a href="{{route("murahus.show", ['murahu'=>$murah->id])}}" id="detail-btn"
-                                        class="btn btn-light text-light shadow w-50 detail-murah"
-                                        style="background-color: #475889">Detail
-                                    </a> --}}
                                     <a href="Detail" id="detail-btn"
                                         class="btn btn-light text-light shadow w-50 detail-murah" data-bs-toggle="modal"
                                         data-bs-target="#detail" data-id="{{ $murah->id }}"
@@ -120,7 +104,7 @@
         </div>
     </div>
 </div>
-<div class="footer">
+<div class="footer ">
     <div class="w-footer py-lg-5 px-lg-5 py-4 px-2">
         <div class="row">
             <div class="col-lg-12">
