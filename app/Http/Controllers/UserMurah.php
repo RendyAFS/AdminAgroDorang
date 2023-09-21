@@ -41,7 +41,8 @@ class UserMurah extends Controller
      */
     public function show(string $id)
     {
-        //
+        $murah = Murah::find($id); // Ganti $murahs dengan $murah
+        return view('actions.detailmurah', compact('murah')); // Ganti $mahals dengan $mahal
     }
 
     /**

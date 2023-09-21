@@ -7,7 +7,7 @@
                 </a>
             </div>
             <div class="isi">
-                {{$mahal->nama_product}}
+                {{$murah->nama_product}}
             </div>
         </div>
         <div class="col-lg-6">
