@@ -39,10 +39,10 @@
         <div class="col-lg-12 col-search">
             <div class="search-bar d-flex justify-content-end align-middle w-search">
                 <label>Search:</label>
-                <input type="text" class="ps-2 p-1 input-search ms-2" id="product-search" >
-                <span class="input-group-text" style="background-color: #9AB957">
+                <input type="text" class="ps-2 p-1 input-search ms-2" id="product-search">
+                {{-- <span class="input-group-text" style="background-color: #9AB957">
                     <i class="bi bi-search text-white"></i>
-                </span>
+                </span> --}}
             </div>
         </div>
     </div>
@@ -50,7 +50,8 @@
         <div class="row">
             <div class="pc">
                 <div class="col-lg-12 d-flex justify-content-center">
-                    <h1 id="no-results-message" class="mt-3" style="display: none; opacity: 0.1;">Maaf Produk tidak ditemukan</h1>
+                    <h1 id="no-results-message" class="mt-3" style="display: none; opacity: 0.1;">Maaf Produk tidak
+                        ditemukan</h1>
                     @foreach ($murahs as $murah)
                         <div class="card m-1 wadah-card shadow" style="border:solid 2px #9AB957">
                             <div class="p-3 isi">
@@ -83,7 +84,8 @@
 
             <div class="hp">
                 <div class="col-lg-12 d-flex mb-5 ">
-                    <h6 id="no-results-message2" class="ms-5 ps-1 mt-3" style="display: none; opacity: 0.1;">Maaf Produk tidak ditemukan</h6>
+                    <h6 id="no-results-message2" class="ms-5 ps-1 mt-3" style="display: none; opacity: 0.1;">Maaf Produk
+                        tidak ditemukan</h6>
                     @foreach ($murahs as $murah)
                         <div class="card m-1 wadah-card shadow" style="border:solid 2px #9AB957;">
                             <div class="p-1 isi">
@@ -144,13 +146,16 @@
                                 viewBox="0 0 51 51" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M25.5001 45.0258L27.0326 43.2991C28.7714 41.3077 30.3354 39.4182 31.727 37.6211L32.8757 36.1057C37.6721 29.6432 40.0716 24.5141 40.0716 20.7231C40.0716 12.6311 33.5484 6.07153 25.5001 6.07153C17.4519 6.07153 10.9287 12.6311 10.9287 20.7231C10.9287 24.5141 13.3281 29.6432 18.1246 36.1057L19.2733 37.6211C21.2585 40.1648 23.3355 42.633 25.5001 45.0258Z"
-                                    stroke="#475889" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    stroke="#475889" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                                 <path
                                     d="M25.5001 26.7144C28.8533 26.7144 31.5716 23.9961 31.5716 20.643C31.5716 17.2898 28.8533 14.5715 25.5001 14.5715C22.147 14.5715 19.4287 17.2898 19.4287 20.643C19.4287 23.9961 22.147 26.7144 25.5001 26.7144Z"
                                     stroke="#475889" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <span class="fs-5">Pergudangan Duta Indah Sentoha M35</span>
+                            <a class="span fs-5 text-decoration-none text-dark" href="https://maps.app.goo.gl/nq1VsQibYZLW22pw6" target="__blank">
+                                Pergudangan Duta Indah Sentoha M35
+                            </a>
                         </li>
                         <li class="nav-item d-flex align-middle mb-3">
                             <svg class="me-4 ms-1" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
@@ -160,7 +165,7 @@
                                     stroke="#475889" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <span class="fs-5">082139863737 / 085707191153</span>
+                            <a href="#" class="span fs-5 text-decoration-none text-dark">082139863737 / 085707191153</a>
                         </li>
                         <li class="nav-item d-flex align-middle mb-3">
                             <svg class="me-3" xmlns="http://www.w3.org/2000/svg" width="38" height="38"
@@ -170,7 +175,7 @@
                                     stroke="#475889" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <span class="fs-5">pt.agrodorang.makmursentosa@gmail.com</span>
+                            <a href="mailto:pt.agrodorang.makmursentosa@gmail.com" class="span fs-5 text-decoration-none text-dark"target="__blank">pt.agrodorang.makmursentosa@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -189,7 +194,9 @@
                                         stroke="#475889" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                Pergudangan Duta Indah Sentoha M35
+                                <a class="span text-decoration-none text-dark" href="https://maps.app.goo.gl/nq1VsQibYZLW22pw6" target="__blank">
+                                    Pergudangan Duta Indah Sentoha M35
+                                </a>
                             </span>
                         </li>
                         <li class="nav-item mb-1">
@@ -201,7 +208,7 @@
                                         stroke="#475889" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                082139863737 / 085707191153
+                                <a href="#" class="span text-decoration-none text-dark">082139863737 / 085707191153</a>
                             </span>
                         </li>
                         <li class="nav-item mb-1">
@@ -213,7 +220,7 @@
                                         stroke="#475889" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" />
                                 </svg>
-                                pt.agrodorang.makmursentosa@gmail.com
+                                <a href="mailto:pt.agrodorang.makmursentosa@gmail.com" class="span text-decoration-none text-dark"target="__blank">pt.agrodorang.makmursentosa@gmail.com</a>
                             </span>
                         </li>
                     </ul>

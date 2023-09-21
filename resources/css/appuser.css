@@ -33,7 +33,12 @@
 
 /* UNTUK HP */
 @media screen and (min-width: 390px) {
-
+    #td{
+        background-color: #475889;
+        color: #fff;
+        font-weight: bold;
+    }
+    
     .logo-banner img {
         width: 35%;
         /* Ukuran gambar logo diubah menjadi lebar penuh */
@@ -84,6 +89,9 @@
     .footer-icon-hp {
         display: block
     }
+    .aboutme {
+        font-size: 10px;
+    }
 
     /* .col-search{
         width: auto;
@@ -100,9 +108,9 @@
         width: 100px;
         height: 18px;
         border-radius:5px;
-        background-color: #9AB957;
-        border: none;
+        background-color: #FFFFFF;
         font-size: 10px;
+        border: solid 3px #9AB957;
     }
     .input-group-text{
         height: 18px;
@@ -191,18 +199,22 @@
         color: #9AB957;
         font-weight: bold;
         font-size: 18px;
+        margin-top: 5px;
     }
     .input-search{
         width: auto;
         height: auto;
         border-radius:5px;
         font-weight: bold;
-        font-size: 18px;
+        font-size: 16px;
 
         /* color: #F2F5FF; */
     }
     .input-group-text{
         height: auto;
+        font-size: 18px;
+    }
+    .aboutme {
         font-size: 18px;
     }
 
