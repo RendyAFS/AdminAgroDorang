@@ -1,5 +1,5 @@
 @extends('layouts.appadmin')
-<div class="container mt-4">
+<div class="container mt-4 animated">
     <div class="row">
         <div class="col-lg-6">
             <div class="d-flex justify-content-center align-items-middle">
