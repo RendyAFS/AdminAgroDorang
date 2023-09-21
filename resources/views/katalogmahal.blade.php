@@ -18,8 +18,12 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="d-flex justify-content-end mb-4">
+                    <a href="{{ route('mahalus.index') }}" target="__blank" class="btn btn-success me-2 shadow">
+                        <i class="bi bi-eye me-2"></i> Lihat Katalog
+                    </a>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                         <i class="bi bi-plus-circle me-1"></i> Tambah Produk
                     </button>
                 </div>
@@ -102,9 +106,13 @@
                     {
                         data: "harga_product",
                         name: "harga_product",
-                        visible: true,
-                        orderable: true,
-                        className: 'align-middle ',
+                        className: 'align-middle',
+                        searchable: false,
+                        className: 'align-middle',
+                        render: function(data, type, row) {
+                            // Mengubah data menjadi format rupiah
+                            return formatRupiah(data);
+                        }
                     },
                     {
                         data: "deskripsi_product",
@@ -150,6 +158,13 @@
                     [25, 50, 100, "All"],
                 ],
             });
+            // Fungsi untuk mengubah angka menjadi format rupiah
+            function formatRupiah(angka) {
+                var reverse = angka.toString().split('').reverse().join('');
+                var ribuan = reverse.match(/\d{1,3}/g);
+                var hasil = ribuan.join('.').split('').reverse().join('');
+                return "Rp " + hasil;
+            }
 
         });
     </script>

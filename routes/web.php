@@ -3,6 +3,8 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KatalogMahalController;
 use App\Http\Controllers\KatalogMurahController;
+use App\Http\Controllers\UserMahal;
+use App\Http\Controllers\UserMurah;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +42,14 @@ Route::get('getkatalogmahal', [KatalogMahalController::class,'getData'])->name('
 
 // Katalog Murah Controller
 Route::resource('murahs', KatalogMurahController::class);
+Route::get('getkatalogmurah', [KatalogMurahController::class,'getData'])->name('murahs.getData');
+
+
+
+
+// Katalog User Murah Controller
+Route::resource('mahalus', UserMahal::class);
+
+
+// Katalog User Murah Controller
+Route::resource('murahus', UserMurah::class);

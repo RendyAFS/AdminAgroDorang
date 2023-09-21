@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('storage/logo/LogoArgoDorang.png') }}">
     <title>{{ $judulpage }}</title>
@@ -18,9 +18,8 @@
 
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/appuser.css'])
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 
 </head>
 
