@@ -35,10 +35,22 @@
             </p>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12 col-search">
+            <div class="search-bar d-flex justify-content-end align-middle w-search">
+                <label>Search:</label>
+                <input type="text" class="ps-2 p-1 input-search ms-2" id="product-search" >
+                <span class="input-group-text" style="background-color: #9AB957">
+                    <i class="bi bi-search text-white"></i>
+                </span>
+            </div>
+        </div>
+    </div>
     <div class="container mt-3 p-lg-5 ">
         <div class="row">
             <div class="pc">
                 <div class="col-lg-12 d-flex justify-content-center">
+                    <h1 id="no-results-message" class="mt-3" style="display: none; opacity: 0.1;">Maaf Produk tidak ditemukan</h1>
                     @foreach ($mahals as $mahal)
                         <div class="card m-1 wadah-card shadow" style="border:solid 2px #9AB957">
                             <div class="p-3 isi">
@@ -70,9 +82,10 @@
             </div>
 
             <div class="hp">
-                <div class="col-lg-12 d-flex mb-5">
+                <div class="col-lg-12 d-flex mb-5 ">
+                    <h6 id="no-results-message2" class="ms-5 ps-1 mt-3" style="display: none; opacity: 0.1;">Maaf Produk tidak ditemukan</h6>
                     @foreach ($mahals as $mahal)
-                        <div class="card m-1 wadah-card shadow" style="border:solid 2px #9AB957">
+                        <div class="card m-1 wadah-card shadow" style="border:solid 2px #9AB957;">
                             <div class="p-1 isi">
                                 <img src="{{ asset('/storage/GambarProduk/' . $mahal->gambar_product) }}" class=""
                                     alt="..." style="width:100%; height:75px;  object-fit: cover;">
@@ -218,12 +231,61 @@
             var id = $(this).data('id');
             console.log(id);
             $.ajax({
-                url: "{{ route('mahalus.show', ['mahalu' => ':id']) }}".replace(':id', id),
+                url: "{{ route('katalog1.show', ['katalog1' => ':id']) }}".replace(':id', id),
                 method: 'GET',
                 success: function(response) {
                     $('#detail .modal-content').html(response);
                 }
             });
+        });
+    });
+    $(document).ready(function() {
+        $("#product-search").on("input", function() {
+            var searchText = $(this).val().toLowerCase();
+            var noResultsMessage = $("#no-results-message"); // Reference to the message
+
+            // Loop through each product card and hide/show them based on the search input
+            var anyResults = false; // Flag to check if any results are found
+            $(".wadah-card").each(function() {
+                var productName = $(this).find(".card-title").text().toLowerCase();
+                if (productName.includes(searchText)) {
+                    $(this).show();
+                    anyResults = true; // Set the flag to true if a result is found
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            // Show/hide the "Data tidak ditemukan" message based on the flag
+            if (anyResults) {
+                noResultsMessage.hide();
+            } else {
+                noResultsMessage.show();
+            }
+        });
+    });
+    $(document).ready(function() {
+        $("#product-search").on("input", function() {
+            var searchText = $(this).val().toLowerCase();
+            var noResultsMessage2 = $("#no-results-message2"); // Reference to the message
+
+            // Loop through each product card and hide/show them based on the search input
+            var anyResults = false; // Flag to check if any results are found
+            $(".wadah-card").each(function() {
+                var productName = $(this).find(".card-title").text().toLowerCase();
+                if (productName.includes(searchText)) {
+                    $(this).show();
+                    anyResults = true; // Set the flag to true if a result is found
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            if (anyResults) {
+                noResultsMessage2.hide();
+            } else {
+                noResultsMessage2.show();
+            }
         });
     });
 </script>

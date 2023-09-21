@@ -48,8 +48,8 @@ Route::get('getkatalogmurah', [KatalogMurahController::class,'getData'])->name('
 
 
 // Katalog User Murah Controller
-Route::resource('mahalus', UserMahal::class);
+Route::resource('katalog1', UserMahal::class);
 
 
 // Katalog User Murah Controller
-Route::resource('murahus', UserMurah::class);
+Route::resource('katalog2', UserMurah::class);

@@ -85,6 +85,30 @@
         display: block
     }
 
+    /* .col-search{
+        width: auto;
+    } */
+    .w-search{
+        width: auto;
+    }
+    .w-search label{
+        color: #9AB957;
+        font-weight: bold;
+        font-size: 10px;
+    }
+    .input-search{
+        width: 100px;
+        height: 18px;
+        border-radius:5px;
+        background-color: #9AB957;
+        border: none;
+        font-size: 10px;
+    }
+    .input-group-text{
+        height: 18px;
+        font-size: 8px;
+    }
+
 }
 
 /* UNTUK TABLET */
@@ -100,6 +124,7 @@
     .logo-banner p {
         font-size: 20px
     }
+
 
 }
 
@@ -156,6 +181,31 @@
     .footer-icon-hp {
         display: none
     }
+        /* .col-search{
+        width: auto;
+    } */
+    .w-search{
+        width: auto;
+    }
+    .w-search label{
+        color: #9AB957;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .input-search{
+        width: auto;
+        height: auto;
+        border-radius:5px;
+        font-weight: bold;
+        font-size: 18px;
+
+        /* color: #F2F5FF; */
+    }
+    .input-group-text{
+        height: auto;
+        font-size: 18px;
+    }
+
 }
 
 /* UNTUL LAPTOP PC */
