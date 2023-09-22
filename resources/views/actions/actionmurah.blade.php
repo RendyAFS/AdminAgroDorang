@@ -1,5 +1,5 @@
 <div class="d-flex">
-    <a href="{{ route('murahs.edit', ['murah' => $murah->id]) }}" class="btn btn-outline-primary btn-delete btn-sm me-2"><i class="bi-pencil-square"></i></a>
+    <a href="{{ route('murahs.edit', ['murah' => $murah->id]) }}" class="btn btn-outline-primary btn-sm me-2"><i class="bi-pencil-square"></i></a>
 
     <div>
         <form action="{{ route('murahs.destroy', ['murah' => $murah->id]) }}" method="POST">
