@@ -14,7 +14,8 @@ class UserMahal extends Controller
     {
 
         $judulpage = 'Katalog';
-        $mahals = Mahal::all();
+        // $mahals = Mahal::all();
+        $mahals = Mahal::paginate(12);
         return view('user.usermahal', compact(
             'judulpage',
             'mahals'
