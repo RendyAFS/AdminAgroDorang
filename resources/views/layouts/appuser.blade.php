@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('storage/logo/LogoArgoDorang.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('storage/Logo/LogoAgroDorang.png') }}">
+
     <title>{{ $judulpage }}</title>
 
     <!-- Fonts -->
