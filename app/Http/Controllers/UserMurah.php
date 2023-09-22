@@ -13,8 +13,8 @@ class UserMurah extends Controller
     public function index()
     {
         $judulpage = 'Katalog';
-        // $murahs = Murah::all();
-        $murahs = Murah::paginate(12);
+        $murahs = Murah::all();
+        // $murahs = Murah::paginate(12);
         return view('user.usermurah', compact(
             'judulpage',
             'murahs'

@@ -14,8 +14,8 @@ class UserMahal extends Controller
     {
 
         $judulpage = 'Katalog';
-        // $mahals = Mahal::all();
-        $mahals = Mahal::paginate(12);
+        $mahals = Mahal::all();
+        // $mahals = Mahal::paginate(12);
         return view('user.usermahal', compact(
             'judulpage',
             'mahals'
@@ -52,7 +52,6 @@ class UserMahal extends Controller
      */
     public function edit(string $id)
     {
-
     }
 
     /**
