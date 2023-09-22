@@ -16,6 +16,7 @@ class KatalogMahalController extends Controller
      */
     public function index()
     {
+        confirmDelete();
         $judulpage = "Katalog Mahal";
         $satuans = Satuan::all();
         return view('katalogmahal', compact(

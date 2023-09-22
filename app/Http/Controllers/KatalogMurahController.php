@@ -13,6 +13,7 @@ class KatalogMurahController extends Controller
 {
     public function index()
     {
+        confirmDelete();
         $judulpage = "Katalog Murah";
         $satuans = Satuan::all();
         return view('katalogmurah', compact(
