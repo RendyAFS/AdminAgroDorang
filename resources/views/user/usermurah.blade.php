@@ -2,12 +2,12 @@
 
 <div class="animated">
     <div class="banner mb-5 shadow-lg ">
-        <img src="{{ asset('/storage/bahan/Banner.png') }}" alt="">
+        <img src="{{ asset('/storage/Bahan/Banner.png') }}" alt="">
         <div class="banner-content">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-6 text-center">
                     <div class="logo-banner">
-                        <img class="sahdow" src="{{ asset('/storage/Logo/LogoArgoDorang.png') }}" alt="Logo AgroDorang">
+                        <img class="sahdow" src="{{ asset('/storage/Logo/LogoAgroDorang.png') }}" alt="Logo AgroDorang">
                         <p class="fst-italic" style="color: #475889">
                             Supplier of Staple Food Ingredients and Kitchen Seasonings.
                         </p>
@@ -112,7 +112,7 @@
         <div class="w-footer py-lg-5 px-lg-5 py-4 px-2">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="sahdow footer ms-lg-5 ps-lg-2" src="{{ asset('/storage/Logo/LogoArgoDorang.png') }}"
+                    <img class="sahdow footer ms-lg-5 ps-lg-2" src="{{ asset('/storage/Logo/LogoAgroDorang.png') }}"
                         alt="Logo AgroDorang">
                 </div>
             </div>
