@@ -51,16 +51,17 @@ class KatalogMurahController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'mimes' => 'Format file :harus .jpg, .png, atau .jpeg'
+            'mimes' => 'Format file harus .jpg, .png, atau .jpeg',
+            'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'required|mimes:jpg,png,jpeg',
+            'gambar_product' => 'required|mimes:jpg,png,jpeg|max:500', // Tambahkan aturan max di sini
         ], $messages);
 
         if ($validator->fails()) {
-            Alert::error('Gagal Menambahkan', 'Terjadi kesalahan Menambahkan Gambar Produk Format Tidak sesuai.');
+            Alert::error('Gagal Menambahkan', 'Terjadi kesalahan Menambahkan Gambar Produk. Pastikan format dan ukuran file sesuai.');
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -73,7 +74,7 @@ class KatalogMurahController extends Controller
             // Simpan file dengan nama asli
             $file->storeAs('public/GambarProduk', $gambar_product);
         }
-        // Buat objek Mahal baru berdasarkan data yang diterima
+        // Buat objek Murah baru berdasarkan data yang diterima
         $murah = new Murah;
         $murah->nama_product = $request->nama_product;
         $murah->gambar_product = $request->gambar_product;
@@ -86,10 +87,9 @@ class KatalogMurahController extends Controller
             $murah->gambar_product = $gambar_product;
         }
 
-        // Simpan objek murah ke dalam database
+        // Simpan objek Murah ke dalam database
         $murah->save();
         Alert::success('Berhasil Menambahkan', 'Produk Berhasil Terinput.');
-
 
         // Redirect ke halaman yang sesuai setelah penyimpanan data
         return redirect()->route('murahs.index');
@@ -98,9 +98,8 @@ class KatalogMurahController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( string $id)
+    public function show(string $id)
     {
-
     }
 
     /**
@@ -123,16 +122,17 @@ class KatalogMurahController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            'mimes' => 'Format file harus .jpg, .png, atau .jpeg'
+            'mimes' => 'Format file harus .jpg, .png, atau .jpeg',
+            'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'nullable|mimes:jpg,png,jpeg',
+            'gambar_product' => 'nullable|mimes:jpg,png,jpeg|max:500', // Tambahkan aturan max di sini
         ], $messages);
 
         if ($validator->fails()) {
-            Alert::error('Gagal Mengupdate', 'Terjadi kesalahan Mengupdate Gambar Produk Format Tidak sesuai.');
+            Alert::error('Gagal Mengupdate', 'Terjadi kesalahan Mengupdate Gambar Produk. Pastikan format dan ukuran file sesuai.');
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -174,6 +174,7 @@ class KatalogMurahController extends Controller
         // Redirect ke halaman yang sesuai setelah pembaruan data
         return redirect()->route('murahs.index');
     }
+
 
 
     /**

@@ -54,16 +54,17 @@ class KatalogMahalController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'mimes' => 'Format file :harus .jpg, .png, atau .jpeg'
+            'mimes' => 'Format file harus .jpg, .png, atau .jpeg',
+            'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'required|mimes:jpg,png,jpeg',
+            'gambar_product' => 'required|mimes:jpg,png,jpeg|max:500', // Tambahkan aturan max di sini
         ], $messages);
 
         if ($validator->fails()) {
-            Alert::error('Gagal Menambahkan', 'Terjadi kesalahan Menambahkan Gambar Produk Format Tidak sesuai.');
+            Alert::error('Gagal Menambahkan', 'Terjadi kesalahan Menambahkan Gambar Produk. Pastikan format dan ukuran file sesuai.');
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -76,6 +77,7 @@ class KatalogMahalController extends Controller
             // Simpan file dengan nama asli
             $file->storeAs('public/GambarProduk', $gambar_product);
         }
+
         // Buat objek Mahal baru berdasarkan data yang diterima
         $mahal = new Mahal;
         $mahal->nama_product = $request->nama_product;
@@ -93,10 +95,10 @@ class KatalogMahalController extends Controller
         $mahal->save();
         Alert::success('Berhasil Menambahkan', 'Produk Berhasil Terinput.');
 
-
         // Redirect ke halaman yang sesuai setelah penyimpanan data
         return redirect()->route('mahals.index');
     }
+
 
     /**
      * Display the specified resource.
@@ -126,16 +128,17 @@ class KatalogMahalController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            'mimes' => 'Format file harus .jpg, .png, atau .jpeg'
+            'mimes' => 'Format file harus .jpg, .png, atau .jpeg',
+            'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'nullable|mimes:jpg,png,jpeg',
+            'gambar_product' => 'nullable|mimes:jpg,png,jpeg|max:500', // Tambahkan aturan max di sini
         ], $messages);
 
         if ($validator->fails()) {
-            Alert::error('Gagal Mengupdate', 'Terjadi kesalahan Mengupdate Gambar Produk Format Tidak sesuai.');
+            Alert::error('Gagal Mengupdate', 'Terjadi kesalahan Mengupdate Gambar Produk. Pastikan format dan ukuran file sesuai.');
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -177,6 +180,7 @@ class KatalogMahalController extends Controller
         // Redirect ke halaman yang sesuai setelah pembaruan data
         return redirect()->route('mahals.index');
     }
+
 
 
     /**

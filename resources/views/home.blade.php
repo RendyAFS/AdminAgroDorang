@@ -16,7 +16,6 @@
         </div>
         <div class="d-flex justify-content-center ">
             <p class="judul-dashboard">Perbandingan Harga</p>
-
         </div>
         <div class="row mt-5">
             <div class="col-lg-6">
