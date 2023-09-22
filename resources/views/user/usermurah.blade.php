@@ -105,9 +105,9 @@
             </div>
         </div>
     </div>
-    <div class="d-flex justify-content-center">
+    {{-- <div class="d-flex justify-content-center">
         {{ $murahs->onEachSide(1)->links('pagination.custom') }}
-    </div>
+    </div> --}}
     <div class="footer ">
         <div class="w-footer py-lg-5 px-lg-5 py-4 px-2">
             <div class="row">
