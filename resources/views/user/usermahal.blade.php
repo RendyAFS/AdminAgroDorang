@@ -232,7 +232,7 @@
             var id = $(this).data('id');
             console.log(id);
             $.ajax({
-                url: "{{ route('katalog1.show', ['katalog1' => ':id']) }}".replace(':id', id),
+                url: "{{ route('catalogue.show', ['catalogue' => ':id']) }}".replace(':id', id),
                 method: 'GET',
                 success: function(response) {
                     $('#detail .modal-content').html(response);
