@@ -83,13 +83,13 @@
                                         {{ number_format($murah->harga_product, 0, ',', '.') }}/Kg
                                     </p>
                                 </div>
-                                <div class="card-footer text-center">
+                                {{-- <div class="card-footer text-center">
                                     <a href="Detail" class="btn btn-light text-light shadow detail-murah"
                                         data-bs-toggle="modal" data-bs-target="#detail" data-id="{{ $murah->id }}"
                                         style="background-color:#475889; font-size:5px;">
                                         Detail
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         @endforeach
                     </div>
