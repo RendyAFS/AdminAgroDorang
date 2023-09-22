@@ -49,10 +49,9 @@ Route::get('getkatalogmurah', [KatalogMurahController::class,'getData'])->name('
 
 
 // Katalog User Murah Controller
-Route::resource('katalog1', UserMahal::class);
-// Route::get('/search', 'UserMahal@search')->name('search');
+Route::resource('catalogue', UserMahal::class);
 
 
 
 // Katalog User Murah Controller
-Route::resource('katalog2', UserMurah::class);
+Route::resource('katalog1', UserMurah::class);
