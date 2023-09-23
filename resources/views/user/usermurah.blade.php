@@ -3,12 +3,12 @@
 @section('content')
     <div class="animated">
         <div class="banner mb-5 shadow-lg ">
-            <img src="{{ asset('/storage/Bahan/Banner.png') }}" alt="">
+            <img src="{{ asset('/storage/Bahan/Banner.webp') }}" alt="">
             <div class="banner-content">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-6 text-center">
                         <div class="logo-banner">
-                            <img class="sahdow" src="{{ asset('/storage/Logo/LogoAgroDorang.png') }}" alt="Logo AgroDorang">
+                            <img class="sahdow" src="{{ asset('/storage/Logo/LogoAgroDorang.webp') }}" alt="Logo AgroDorang">
                             <p class="fst-italic" style="color: #475889">
                                 Supplier of Staple Food Ingredients and Kitchen Seasonings.
                             </p>
