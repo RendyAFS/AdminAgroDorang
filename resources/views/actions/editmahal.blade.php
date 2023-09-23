@@ -1,4 +1,5 @@
 @extends('layouts.appadmin')
+@section('content')
 <div class="container mt-4 animated">
     <div class="row">
         <div class="col-lg-6">
@@ -80,6 +81,5 @@
             </div>
         </div>
     </div>
-
 </div>
-
+@endsection

@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="d-flex justify-content-end mb-4">
-                    <a href="https://www.compress2go.com/id/kompres-jpg" target="__blank" class="btn btn-danger me-2 shadow">
-                        <i class="bi bi-images me-2"></i> Kompress IMG
+                    <a href="https://imagecompressor.11zon.com/en/compress-webp/" target="__blank" class="btn btn-danger me-2 shadow">
+                        <i class="bi bi-images me-2"></i> Convert .WEBP
                     </a>
                     <a href="{{ route('catalogue.index') }}" target="__blank" class="btn btn-success me-2 shadow">
                         <i class="bi bi-eye me-2"></i> Lihat Katalog

@@ -51,13 +51,13 @@ class KatalogMurahController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'mimes' => 'Format file harus .jpg, .png, atau .jpeg',
+            'mimes' => 'Format file harus .webp',
             'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'required|mimes:jpg,png,jpeg|max:500', // Tambahkan aturan max di sini
+            'gambar_product' => 'required|mimes:webp|max:500', // Tambahkan aturan max di sini
         ], $messages);
 
         if ($validator->fails()) {
@@ -122,13 +122,13 @@ class KatalogMurahController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            'mimes' => 'Format file harus .jpg, .png, atau .jpeg',
+            'mimes' => 'Format file harus .webp',
             'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'nullable|mimes:jpg,png,jpeg|max:500', // Tambahkan aturan max di sini
+            'gambar_product' => 'nullable|mimes:webp|max:500', // Tambahkan aturan max di sini
         ], $messages);
 
         if ($validator->fails()) {

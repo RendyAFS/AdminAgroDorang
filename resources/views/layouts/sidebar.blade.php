@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-2">
             <div class="wadahlogo d-flex justify-content-center">
-                <img src="{{ asset('storage/Logo/LogoAgroDorang.png')}}" alt="Logo">
+                <img src="{{ asset('storage/Logo/LogoAgroDorang.webp')}}" alt="Logo">
             </div>
         </div>
         <div class="col-10">
@@ -38,7 +38,7 @@
 {{-- SideBar --}}
 <div class="sidebar">
     <div class="d-flex justify-content-center p-2 mb-4" style="background-color:white; border-radius:15px;">
-        <img src="{{ asset('storage/Logo/LogoAgroDorang.png')}}" alt="Logo" style="width: 110px">
+        <img src="{{ asset('storage/Logo/LogoAgroDorang.webp')}}" alt="Logo" style="width: 110px">
     </div>
     <div class="menu ">
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
