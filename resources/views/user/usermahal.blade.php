@@ -115,7 +115,7 @@
             <div class="w-footer py-lg-5 px-lg-5 py-4 px-2">
                 <div class="row">
                     <div class="col-lg-12">
-                        <img class="sahdow footer ms-lg-5 ps-lg-2" src="{{ asset('/storage/Logo/LogoAgroDorang.png') }}"
+                        <img class="sahdow footer ms-lg-5 ps-lg-2" src="{{ asset('/storage/Logo/LogoAgroDorang.webp') }}"
                             alt="Logo AgroDorang">
                     </div>
                 </div>
