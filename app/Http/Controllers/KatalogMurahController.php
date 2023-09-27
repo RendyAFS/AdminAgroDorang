@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Murah;
 use App\Models\Satuan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -72,7 +73,7 @@ class KatalogMurahController extends Controller
             $gambar_product = $file->getClientOriginalName();
 
             // Simpan file dengan nama asli
-            $file->storeAs('public/GambarProduk', $gambar_product);
+            $file->move('storage/GambarProduk', $gambar_product);
         }
         // Buat objek Murah baru berdasarkan data yang diterima
         $murah = new Murah;
@@ -148,7 +149,7 @@ class KatalogMurahController extends Controller
             $gambarBaru = $file->getClientOriginalName();
 
             // Simpan file baru dengan nama asli
-            $file->storeAs('public/GambarProduk', $gambarBaru);
+            $file->move('storage/GambarProduk', $gambarBaru);
 
             // Gantikan gambar lama dengan gambar baru
             $murah->gambar_product = $gambarBaru;
@@ -166,7 +167,7 @@ class KatalogMurahController extends Controller
 
         // Hapus gambar lama jika ada gambar baru
         if (isset($gambarBaru)) {
-            Storage::delete('public/GambarProduk/' . $gambarLama);
+            File::delete('storage/GambarProduk/' . $gambarLama);
         }
 
         Alert::success('Berhasil Memperbarui', 'Produk berhasil diperbarui.');
@@ -183,10 +184,11 @@ class KatalogMurahController extends Controller
     public function destroy(string $id)
     {
         // ELOQUENT
+        // ELOQUENT
         $murah = Murah::find($id);
 
         // Hapus file gambar dari penyimpanan lokal (storage)
-        $gambarPath = storage_path('app/public/GambarProduk/' . $murah->gambar_product);
+        $gambarPath = 'storage/GambarProduk/' . $murah->gambar_product;
         if (file_exists($gambarPath)) {
             unlink($gambarPath); // Menghapus file gambar dari penyimpanan lokal
         }

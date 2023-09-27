@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mahal;
 use App\Models\Satuan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -75,7 +76,7 @@ class KatalogMahalController extends Controller
             $gambar_product = $file->getClientOriginalName();
 
             // Simpan file dengan nama asli
-            $file->storeAs('public/GambarProduk', $gambar_product);
+            $file->move('storage/GambarProduk', $gambar_product);
         }
 
         // Buat objek Mahal baru berdasarkan data yang diterima
@@ -147,14 +148,14 @@ class KatalogMahalController extends Controller
         // Simpan gambar lama dalam variabel
         $gambarLama = $mahal->gambar_product;
 
-        if ($request->hasFile('gambar_product')) {
+        if ($request->hasFile('storage/gambar_product')) {
             $file = $request->file('gambar_product');
 
             // Dapatkan nama asli file baru
             $gambarBaru = $file->getClientOriginalName();
 
             // Simpan file baru dengan nama asli
-            $file->storeAs('public/GambarProduk', $gambarBaru);
+            $file->move('/GambarProduk', $gambarBaru);
 
             // Gantikan gambar lama dengan gambar baru
             $mahal->gambar_product = $gambarBaru;
@@ -172,7 +173,7 @@ class KatalogMahalController extends Controller
 
         // Hapus gambar lama jika ada gambar baru
         if (isset($gambarBaru)) {
-            Storage::delete('public/GambarProduk/' . $gambarLama);
+            File::delete('public/GambarProduk/' . $gambarLama);
         }
 
         Alert::success('Berhasil Memperbarui', 'Produk berhasil diperbarui.');
@@ -188,18 +189,18 @@ class KatalogMahalController extends Controller
      */
     public function destroy(string $id)
     {
-        // ELOQUENT
-        $mahal = Mahal::find($id);
+         // ELOQUENT
+         $mahal = Mahal::find($id);
 
-        // Hapus file gambar dari penyimpanan lokal (storage)
-        $gambarPath = storage_path('app/public/GambarProduk/' . $mahal->gambar_product);
-        if (file_exists($gambarPath)) {
-            unlink($gambarPath); // Menghapus file gambar dari penyimpanan lokal
-        }
+         // Hapus file gambar dari penyimpanan lokal (storage)
+         $gambarPath = 'storage/GambarProduk/' . $mahal->gambar_product;
+         if (file_exists($gambarPath)) {
+             unlink($gambarPath); // Menghapus file gambar dari penyimpanan lokal
+         }
 
-        $mahal->delete(); // Hapus data dari database
-        Alert::success('Berhasil Terhapus', 'Produk Berhasil Terhapus.');
+         $mahal->delete(); // Hapus data dari database
+         Alert::success('Berhasil Terhapus', 'Produk Berhasil Terhapus.');
 
-        return redirect()->route('mahals.index');
+         return redirect()->route('mahals.index');
     }
 }
