@@ -18,7 +18,7 @@
                         <li ><a href="{{route('mahals.index')}}" class="dropdown-item"><i class="bi bi-card-list me-2"></i>Katalog Mahal</a></li>
                         <li ><a href="{{route('murahs.index')}}" class="dropdown-item"><i class="bi bi-card-list me-2"></i>Katalog Murah</a></li>
                         <li>
-                            <a class="dropdown-item out" href="{{ route('logout') }}"
+                            <a class="dropdown-item out" style="color: red" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 <i class="bi bi-power"></i> Logout
@@ -53,10 +53,10 @@
             {{ Auth::user()->name }}
         </a>
         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
+            <a class="dropdown-item" href="{{ route('logout') }}" style="color: red"
                 onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+                 <i class="bi bi-power"></i> {{ __('Logout') }}
             </a>
 
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
