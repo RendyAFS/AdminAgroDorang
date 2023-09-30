@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-use Intervention\Image\ImageManagerStatic as Image;
+// use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\ImageManagerStatic;
 
 class KatalogMahalController extends Controller
 {
@@ -81,7 +82,7 @@ class KatalogMahalController extends Controller
             $imagePath = public_path('storage/GambarProduk/' . $gambar_product);
 
             // Gunakan Intervention/Image untuk membuka dan mengompres gambar
-            $image = Image::make($imagePath);
+            $image = ImageManagerStatic::make($imagePath);
 
             // Kompres gambar sesuai kebutuhan
             $image->resize(800, null, function ($constraint) {
@@ -173,7 +174,7 @@ class KatalogMahalController extends Controller
 
             // Kompres gambar baru sebelum menyimpannya
             $imagePath = public_path('storage/GambarProduk/' . $gambarBaru);
-            $image = Image::make($imagePath);
+            $image = ImageManagerStatic::make($imagePath);
             $image->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
