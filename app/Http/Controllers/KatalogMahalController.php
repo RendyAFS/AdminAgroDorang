@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
-// use Intervention\Image\ImageManagerStatic as Image;
-use Intervention\Image\ImageManagerStatic;
+use Intervention\Image\Facades\Image;
 
 class KatalogMahalController extends Controller
 {
@@ -56,33 +55,33 @@ class KatalogMahalController extends Controller
      */
     public function store(Request $request)
     {
-        $messages = [
-            'mimes' => 'Format file harus .webp, .jpg, .jpeg, .png',
-        ];
+        // Cek apakah ada file yang diunggah
+        if ($request->hasFile('gambar_product')) {
+            $file = $request->file('gambar_product');
+            $messages = [
+                'mimes' => 'Format file harus .webp, .jpg, .jpeg, .png',
+            ];
 
-        // Validasi input menggunakan Validator
-        $validator = Validator::make($request->all(), [
-            'gambar_product' => 'nullable|mimes:webp,jpg,jpeg,png',
-        ], $messages);
+            // Validasi tipe file yang diunggah
+            $validator = Validator::make(['gambar_product' => $file], [
+                'gambar_product' => 'mimes:webp,jpg,jpeg,png',
+            ], $messages);
 
-        if ($validator->fails()) {
-            Alert::error('Gagal Menambahkan', 'Terjadi kesalahan Menambahkan Gambar Produk. Pastikan format dan ukuran file sesuai.');
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+            if ($validator->fails()) {
+                Alert::error('Gagal Menambahkan', 'Terjadi kesalahan Menambahkan Gambar Produk. Pastikan format dan ukuran file sesuai.');
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
-        $file = $request->file('gambar_product');
-
-        if ($file != null) {
             // Dapatkan nama asli file
             $gambar_product = $file->getClientOriginalName();
 
             // Simpan file dengan nama asli
             $file->move('storage/GambarProduk', $gambar_product);
             // Path lengkap menuju file gambar yang akan diproses
-            $imagePath = public_path('storage/GambarProduk/' . $gambar_product);
+            $imagePath = ('storage/GambarProduk/' . $gambar_product);
 
             // Gunakan Intervention/Image untuk membuka dan mengompres gambar
-            $image = ImageManagerStatic::make($imagePath);
+            $image = Image::make($imagePath);
 
             // Kompres gambar sesuai kebutuhan
             $image->resize(800, null, function ($constraint) {
@@ -94,19 +93,17 @@ class KatalogMahalController extends Controller
             $image->save($imagePath);
         }
 
-
         // Buat objek Mahal baru berdasarkan data yang diterima
         $mahal = new Mahal;
         $mahal->nama_product = $request->nama_product;
-        $mahal->gambar_product = $request->gambar_product;
+
+        // Gunakan $gambar_product yang diunggah jika ada, atau gunakan $request->gambar_product jika tidak ada file yang diunggah
+        $mahal->gambar_product = isset($gambar_product) ? $gambar_product : $request->gambar_product;
+
         $mahal->harga_product = $request->harga_product;
         $mahal->deskripsi_product = $request->deskripsi_product;
         $mahal->stok_product = $request->stok_product;
         $mahal->satuans_id = $request->satuans_id;
-
-        if ($file != null) {
-            $mahal->gambar_product = $gambar_product;
-        }
 
         // Simpan objek Mahal ke dalam database
         $mahal->save();
@@ -115,6 +112,7 @@ class KatalogMahalController extends Controller
         // Redirect ke halaman yang sesuai setelah penyimpanan data
         return redirect()->route('mahals.index');
     }
+
 
 
     /**
@@ -173,8 +171,8 @@ class KatalogMahalController extends Controller
             $file->move('storage/GambarProduk', $gambarBaru);
 
             // Kompres gambar baru sebelum menyimpannya
-            $imagePath = public_path('storage/GambarProduk/' . $gambarBaru);
-            $image = ImageManagerStatic::make($imagePath);
+            $imagePath = ('storage/GambarProduk/' . $gambarBaru);
+            $image = Image::make($imagePath);
             $image->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
@@ -197,6 +195,11 @@ class KatalogMahalController extends Controller
 
         // Simpan objek Mahal yang diperbarui ke dalam database
         $mahal->save();
+
+        // Hapus gambar lama jika ada gambar baru
+        if (isset($gambarBaru)) {
+            File::delete('storage/GambarProduk/' . $gambarLama);
+        }
 
         Alert::success('Berhasil Memperbarui', 'Produk berhasil diperbarui.');
 
