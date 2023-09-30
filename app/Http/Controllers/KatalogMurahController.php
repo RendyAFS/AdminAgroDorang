@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class KatalogMurahController extends Controller
 {
@@ -52,13 +54,12 @@ class KatalogMurahController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'mimes' => 'Format file harus .webp',
-            'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
+            'mimes' => 'Format file harus .webp, .jpg, .jpeg, .png',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'required|mimes:webp|max:500', // Tambahkan aturan max di sini
+            'gambar_product' => 'nullable|mimes:webp,jpg,jpeg,png',
         ], $messages);
 
         if ($validator->fails()) {
@@ -74,6 +75,20 @@ class KatalogMurahController extends Controller
 
             // Simpan file dengan nama asli
             $file->move('storage/GambarProduk', $gambar_product);
+            // Path lengkap menuju file gambar yang akan diproses
+            $imagePath = public_path('storage/GambarProduk/' . $gambar_product);
+
+            // Gunakan Intervention/Image untuk membuka dan mengompres gambar
+            $image = Image::make($imagePath);
+
+            // Kompres gambar sesuai kebutuhan
+            $image->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            // Simpan gambar yang telah dikompres
+            $image->save($imagePath);
         }
         // Buat objek Murah baru berdasarkan data yang diterima
         $murah = new Murah;
@@ -123,13 +138,12 @@ class KatalogMurahController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            'mimes' => 'Format file harus .webp',
-            'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
+            'mimes' => 'Format file harus .webp, .jpg, .jpeg, .png',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'nullable|mimes:webp|max:500', // Tambahkan aturan max di sini
+            'gambar_product' => 'nullable|mimes:webp,jpg,jpeg,png',
         ], $messages);
 
         if ($validator->fails()) {
@@ -150,9 +164,20 @@ class KatalogMurahController extends Controller
 
             // Simpan file baru dengan nama asli
             $file->move('storage/GambarProduk', $gambarBaru);
+            // Kompres gambar baru sebelum menyimpannya
+            $imagePath = public_path('storage/GambarProduk/' . $gambarBaru);
+            $image = Image::make($imagePath);
+            $image->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $image->save($imagePath);
 
             // Gantikan gambar lama dengan gambar baru
             $murah->gambar_product = $gambarBaru;
+
+            // Hapus gambar lama jika ada gambar baru
+            File::delete('storage/GambarProduk/' . $gambarLama);
         }
 
         // Update atribut lain sesuai dengan permintaan
