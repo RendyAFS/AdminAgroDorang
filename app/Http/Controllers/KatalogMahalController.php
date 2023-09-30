@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class KatalogMahalController extends Controller
 {
@@ -55,13 +56,12 @@ class KatalogMahalController extends Controller
     public function store(Request $request)
     {
         $messages = [
-            'mimes' => 'Format file harus .webp',
-            'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
+            'mimes' => 'Format file harus .webp, .jpg, .jpeg, .png',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'required|mimes:webp|max:500', // Tambahkan aturan max di sini
+            'gambar_product' => 'nullable|mimes:webp,jpg,jpeg,png',
         ], $messages);
 
         if ($validator->fails()) {
@@ -77,7 +77,22 @@ class KatalogMahalController extends Controller
 
             // Simpan file dengan nama asli
             $file->move('storage/GambarProduk', $gambar_product);
+            // Path lengkap menuju file gambar yang akan diproses
+            $imagePath = public_path('storage/GambarProduk/' . $gambar_product);
+
+            // Gunakan Intervention/Image untuk membuka dan mengompres gambar
+            $image = Image::make($imagePath);
+
+            // Kompres gambar sesuai kebutuhan
+            $image->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            // Simpan gambar yang telah dikompres
+            $image->save($imagePath);
         }
+
 
         // Buat objek Mahal baru berdasarkan data yang diterima
         $mahal = new Mahal;
@@ -129,13 +144,12 @@ class KatalogMahalController extends Controller
     public function update(Request $request, $id)
     {
         $messages = [
-            'mimes' => 'Format file harus .webp',
-            'max' => 'Ukuran file tidak boleh lebih dari 500 KB',
+            'mimes' => 'Format file harus .webp, .jpg, .jpeg, .png',
         ];
 
         // Validasi input menggunakan Validator
         $validator = Validator::make($request->all(), [
-            'gambar_product' => 'nullable|mimes:webp|max:500', // Tambahkan aturan max di sini
+            'gambar_product' => 'nullable|mimes:webp,jpg,jpeg,png',
         ], $messages);
 
         if ($validator->fails()) {
@@ -148,17 +162,29 @@ class KatalogMahalController extends Controller
         // Simpan gambar lama dalam variabel
         $gambarLama = $mahal->gambar_product;
 
-        if ($request->hasFile('storage/gambar_product')) {
+        if ($request->hasFile('gambar_product')) {
             $file = $request->file('gambar_product');
 
             // Dapatkan nama asli file baru
             $gambarBaru = $file->getClientOriginalName();
 
             // Simpan file baru dengan nama asli
-            $file->move('/GambarProduk', $gambarBaru);
+            $file->move('storage/GambarProduk', $gambarBaru);
+
+            // Kompres gambar baru sebelum menyimpannya
+            $imagePath = public_path('storage/GambarProduk/' . $gambarBaru);
+            $image = Image::make($imagePath);
+            $image->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $image->save($imagePath);
 
             // Gantikan gambar lama dengan gambar baru
             $mahal->gambar_product = $gambarBaru;
+
+            // Hapus gambar lama jika ada gambar baru
+            File::delete('storage/GambarProduk/' . $gambarLama);
         }
 
         // Update atribut lain sesuai dengan permintaan
@@ -170,11 +196,6 @@ class KatalogMahalController extends Controller
 
         // Simpan objek Mahal yang diperbarui ke dalam database
         $mahal->save();
-
-        // Hapus gambar lama jika ada gambar baru
-        if (isset($gambarBaru)) {
-            File::delete('public/GambarProduk/' . $gambarLama);
-        }
 
         Alert::success('Berhasil Memperbarui', 'Produk berhasil diperbarui.');
 
@@ -189,18 +210,18 @@ class KatalogMahalController extends Controller
      */
     public function destroy(string $id)
     {
-         // ELOQUENT
-         $mahal = Mahal::find($id);
+        // ELOQUENT
+        $mahal = Mahal::find($id);
 
-         // Hapus file gambar dari penyimpanan lokal (storage)
-         $gambarPath = 'storage/GambarProduk/' . $mahal->gambar_product;
-         if (file_exists($gambarPath)) {
-             unlink($gambarPath); // Menghapus file gambar dari penyimpanan lokal
-         }
+        // Hapus file gambar dari penyimpanan lokal (storage)
+        $gambarPath = 'storage/GambarProduk/' . $mahal->gambar_product;
+        if (file_exists($gambarPath)) {
+            unlink($gambarPath); // Menghapus file gambar dari penyimpanan lokal
+        }
 
-         $mahal->delete(); // Hapus data dari database
-         Alert::success('Berhasil Terhapus', 'Produk Berhasil Terhapus.');
+        $mahal->delete(); // Hapus data dari database
+        Alert::success('Berhasil Terhapus', 'Produk Berhasil Terhapus.');
 
-         return redirect()->route('mahals.index');
+        return redirect()->route('mahals.index');
     }
 }
